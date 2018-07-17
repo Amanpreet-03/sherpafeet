@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { css } from 'react-emotion';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 
 const text = css`
     color: rgba(255, 255, 255, 1);

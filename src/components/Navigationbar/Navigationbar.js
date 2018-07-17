@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { css } from 'react-emotion';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 
 const topnav = css`
     background: white;

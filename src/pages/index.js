@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { css } from 'react-emotion';
 import Navigationbar from '../components/Navigationbar/Navigationbar';
 import Footer from '../components/Footer/Footer';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 //import { slide as BurgerMenu } from 'react-burger-menu'
 
 // const dropdown = css`

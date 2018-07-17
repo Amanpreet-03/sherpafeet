@@ -10,10 +10,11 @@
   "dependencies": {
     "emotion": "^9.2.6",
     "emotion-server": "^9.2.6",
-    "gatsby": "^1.9.273",
-    "gatsby-link": "^1.6.40",
-    "gatsby-plugin-emotion": "^1.1.17",
+    "gatsby": "next",
+    "gatsby-plugin-emotion": "next",
+    "react": "^16.4.1",
     "react-burger-menu": "^2.5.2",
+    "react-dom": "^16.4.1",
     "react-emotion": "^9.2.6"
   }
 }
