@@ -47,9 +47,7 @@ const Nav = ()=>(
                 <Link to="#" className={navli}>Log In</Link>
             </ul>
         </nav>
-    </div>
-
-    
+    </div>  
 )
 
 export default Nav;
