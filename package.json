@@ -11,6 +11,7 @@
     "emotion": "^9.2.6",
     "emotion-server": "^9.2.6",
     "gatsby": "next",
+    "gatsby-link": "^1.6.45",
     "gatsby-plugin-emotion": "next",
     "react": "^16.4.1",
     "react-burger-menu": "^2.5.2",
