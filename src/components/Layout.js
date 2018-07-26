@@ -12,6 +12,7 @@ const belownav = css`
     color: #ffffff;
     text-align: center;
     font-size: 0.8em;
+    box-sizing:border-box;
     box-shadow:0px 7px 8px -2px #000000 inset;
 `
 // const layout = css`
@@ -28,6 +29,7 @@ const Layout = (props)=>(
         </div>
         {props.children}
         <Footer/>
+        
     </div>
 )
 export default Layout;

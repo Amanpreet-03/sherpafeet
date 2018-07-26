@@ -31,6 +31,8 @@ const container = css`
     background: #3b5998;
     color: #fff;
     width: 100%;
+    box-sizing:border-box;
+
 `
 
 const Footer=()=>(

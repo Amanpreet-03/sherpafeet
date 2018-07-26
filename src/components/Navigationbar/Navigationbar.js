@@ -1,6 +1,7 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import { css } from 'react-emotion';
-import { Link } from 'gatsby';
+import Link from 'gatsby-link';
+import FaAlignJustify from 'react-icons/lib/fa/align-justify';
 
 const topnav = css`
     background: white;
@@ -11,24 +12,35 @@ const topnav = css`
     left:0;
     width:100%;
     box-shadow:0px 1px 8px -2px #000000;
+    padding: 7px 10px 7px 35px;                     
+    display:flex;                                      
 `
 const logo = css`
-    margin-left:25px;
     height:40px;
+    width:160.5px;
+    flex-shrink:0;                                              
 `
-
 const nav = css`
-    float:right;
-    margin-right:83px;
+    display:flex;                                                        
+    flex:5;                                                                
+    align-items:center;                                                                                                   
     list-style:none;
     font-size:18px;  
     font-weight: bold;
     text-transform: uppercase;
-    font-family:Helvetica Neue,Helvetica,Arial,sans-serif;   
+    font-family:Helvetica Neue,Helvetica,Arial,sans-serif;  
+    @media all and (max-width: 850px) {
+              flex-wrap: wrap;
+          }
+          @media all and (max-width: 750px) {
+            flex-wrap: wrap;
+            display:none;
+        }     
 `
 const navli = css`
-    margin-left:135px;
-    display:inline-block;
+    white-space:nowrap;  
+    text-align:center;
+    flex:1;                                                            
     color: rgba(59,89,152,.6);
     text-decoration:none;
     letter-spacing:3px;
@@ -38,11 +50,11 @@ const navli = css`
         color: #23527c;
       }
 `
-const dropdownitemstyle=css`
+const dropdownitemstyle = css`
       display:block;
       position:absolute;
       background-color:white;
-      left:100px;
+      left:-40px;
       min-width:268px;
       z-index:1;
       box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -57,8 +69,8 @@ const dropdownitemstyle=css`
       & a:hover {
         color: #23527c;
       } 
- `
-const dropdownMenustyle=css`
+`
+const dropdownMenustyle = css`
       position:relative;
       display:inline-block;
       margin:auto;
@@ -74,38 +86,143 @@ const dropdownMenustyle=css`
           }
       }
 `
-const Nav = ()=>(
-    <div className={topnav}>
-        <Link to="#"><img className={logo} src="https://sherpafeet.com/assets/767ae8db.png" alt="sherpafeet brand logo" /></Link>
-        <nav className={nav}>
-            <ul>
-                <Link to="#" className={navli}>Find & Review Guides</Link>
+const space = css`
+    flex:3
+`
+const navDiv = css`
+    text-align:center;
+    flex:1;
+    @media all and (max-width: 750px) {
+        flex-basis: 100%;
+}
+`
+const burgerbutton = css`
+    display:none;
+    color:#3b5998;
+    font-size:32px;
+    @media all and (max-width: 750px) {
+        display:block;
+    }
+`
+const logoSideNav = css`
+    position:absolute;
+    top:10px;
+    left:22px;                                              
+`
+const sideNav = css`
+    height:100%;
+    width:0px;
+    box-sizing:border-box;
+    position:fixed;
+    top:0;
+    right:0;
+    z-index:1;
+    background:#3b5998;
+    overflow-x:hidden;
+    padding-top:60px;
+    transition:0.5s;
+    font-family:Helvetica Neue,Helvetica,Arial,sans-serif;  
+`
+const sideNavLink = css`
+    padding:10px 10px 10px 30px;
+    text-decoration:none;
+    font-size:17px;
+    color:white;
+    display:block;
+    transition:0.3s;
+`
+const btnClose = css`
+    position:absolute;
+    top:0;
+    right:22px;
+    color:white;
+    font-size:36px;
+    margin-left:50px;
+    text-decoration:none;
+`
 
-                <div className={dropdownMenustyle}>
-                    <span className={navli}>Treks</span>
-                    <div className={dropdownitemstyle}>
-                        <a href="#">Indian Himalayas</a>
-                        <a href="#">Uttarakhand Treks</a>
-                        <a href="#">Himachal Treks</a>
-                        <a href="#">Ladakh Treks</a>
-                        <a href="#">Lahaul Spiti Treks</a>
+class Nav extends Component {
+    constructor(props) {
+        super(props);
+        this.openSlideMenu = this.openSlideMenu.bind(this);
+        this.closeSlideMenu = this.closeSlideMenu.bind(this);
+        this.state = { isSlideOpen: `closed`, width: `0px` };
+    }
+
+    openSlideMenu() {
+        this.setState({ isSlideOpen: `open`, width: `500px` });
+        console.log("clicked");
+    }
+
+    closeSlideMenu() {
+        this.setState({ isSlideOpen: `closed`, width: `0px` });
+    }
+
+
+    render() {
+        //const isSlideOpen = this.state.isSlideOpen;
+
+        const menuState = css`
+            width: ${this.state.width};
+
+        `
+        return (
+            <div className={topnav}>
+                <div className={logo}><Link to="#"><img src="https://sherpafeet.com/assets/767ae8db.png" alt="sherpafeet brand logo" /></Link></div>
+                <div className={space}></div>
+
+                <div className={burgerbutton}>
+                    <a onClick={this.openSlideMenu}><FaAlignJustify /></a>
+                    <div className={`${sideNav} ${menuState}`}>
+                        <Link to="#" className={btnClose} onClick={this.closeSlideMenu}>&times;</Link>
+                        <div className={`${logo} ${logoSideNav}`}><img src="https://sherpafeet.com/assets/767ae8db.png" alt="sherpafeet brand logo" /></div>
+                        <a className={sideNavLink} href="#">Find & Review Guides</a>
+                        <a className={sideNavLink} href="#">Indian Himalayas</a>
+                        <a className={sideNavLink} href="#">Uttarakhand Treks</a>
+                        <a className={sideNavLink} href="#">Himachal Treks</a>
+                        <a className={sideNavLink} href="#">Ladakh Treks</a>
+                        <a className={sideNavLink} href="#">Lahaul Spiti Treks</a>
+                        <a className={sideNavLink} href="#">About Us</a>
+                        <a className={sideNavLink} href="#">Mission</a>
+                        <a className={sideNavLink} href="#">Contact</a>
                     </div>
                 </div>
 
-                <div className={dropdownMenustyle}>
-                    <span className={navli}>About</span>
-                    <div className={dropdownitemstyle}>
-                        <a href="#">About Us</a>
-                        <a href="#">Mission</a>
-                        <a href="#">Contact</a>
+                <nav className={nav}>
+                    <div className={navDiv}>
+                        <Link to="#" className={navli}>Find & Review Guides</Link>
                     </div>
-                </div>
+                    <div className={`${dropdownMenustyle} ${navDiv}`}>
+                        <Link className={navli}>Treks</Link>
+                        <div className={dropdownitemstyle}>
+                            <a href="#">Indian Himalayas</a>
+                            <a href="#">Uttarakhand Treks</a>
+                            <a href="#">Himachal Treks</a>
+                            <a href="#">Ladakh Treks</a>
+                            <a href="#">Lahaul Spiti Treks</a>
+                        </div>
+                    </div>
 
-                <Link to="#" className={navli}>Log In</Link>
-            </ul>
-        </nav>
-    </div>  
-)
+                    <div className={`${dropdownMenustyle} ${navDiv}`}>
+                        <Link className={navli}>About</Link>
+                        <div className={dropdownitemstyle}>
+                            <a href="#">About Us</a>
+                            <a href="#">Mission</a>
+                            <a href="#">Contact</a>
+                        </div>
+                    </div>
+
+                    <div className={navDiv}>
+                        <Link to="#" className={navli}>Log In</Link>
+                    </div>
+                </nav>
+
+
+            </div>
+        )
+    }
+}
 
 export default Nav;
+
 
