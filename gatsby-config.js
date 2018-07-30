@@ -1,15 +1,17 @@
 module.exports = {
     plugins: [`gatsby-plugin-emotion`,
-              `gatsby-plugin-typography`
+              `gatsby-plugin-typography`,
+              {
+                resolve: `gatsby-source-mongodb`,
+                options: { dbName: `test`, collection: [`blogs`, `bookings`,`departures`,`guides`,`ratings`,`treks`,`usrs`],
+                server:` { address: 127.0.0.1, port: 27017 }`},
+              },
             ],
   };
   
 
 
-
-
-
-
+  
 
 /*
 

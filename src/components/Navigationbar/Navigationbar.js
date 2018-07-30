@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { css } from 'react-emotion';
-import Link from 'gatsby-link';
+import {Link} from 'gatsby';
 import FaAlignJustify from 'react-icons/lib/fa/align-justify';
 
 const topnav = css`
@@ -150,7 +150,7 @@ class Nav extends Component {
     }
 
     openSlideMenu() {
-        this.setState({ isSlideOpen: `open`, width: `500px` });
+        this.setState({ isSlideOpen: `open`, width: `300px` });
         console.log("clicked");
     }
 
@@ -164,11 +164,10 @@ class Nav extends Component {
 
         const menuState = css`
             width: ${this.state.width};
-
         `
         return (
             <div className={topnav}>
-                <div className={logo}><Link to="#"><img src="https://sherpafeet.com/assets/767ae8db.png" alt="sherpafeet brand logo" /></Link></div>
+                <div className={logo}><Link to="/"><img src="https://sherpafeet.com/assets/767ae8db.png" alt="sherpafeet brand logo" /></Link></div>
                 <div className={space}></div>
 
                 <div className={burgerbutton}>
@@ -213,7 +212,7 @@ class Nav extends Component {
                     </div>
 
                     <div className={navDiv}>
-                        <Link to="#" className={navli}>Log In</Link>
+                        <Link to="/login/" className={navli}>Log In</Link>
                     </div>
                 </nav>
 
