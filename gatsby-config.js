@@ -3,9 +3,10 @@ module.exports = {
               `gatsby-plugin-typography`,
               {
                 resolve: `gatsby-source-mongodb`,
-                options: { dbName: `test`, collection: [`blogs`, `bookings`,`departures`,`guides`,`ratings`,`treks`,`usrs`],
-                server:` { address: 127.0.0.1, port: 27017 }`},
-              },
+                options: { dbName: `test`, 
+                           collection: [`guides`,`treks`,`usrs`]
+                         }
+              }
             ],
   };
   

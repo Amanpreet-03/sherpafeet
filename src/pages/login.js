@@ -45,18 +45,6 @@ const linkText = css`
     color: white;
     font-size:18px;
 `
-const line = css`
-    background: #757575;
-    height:1px;
-    width:10px;
-    margin:10px 0px;
-`
-const lineOr = css`
-    
-    color: #757575;
-    //font-size:18px;
-    
-`
 
 
 export default () => {

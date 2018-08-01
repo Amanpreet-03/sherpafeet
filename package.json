@@ -14,7 +14,7 @@
     "gatsby-link": "^1.6.45",
     "gatsby-plugin-emotion": "next",
     "gatsby-plugin-typography": "^1.7.19",
-    "gatsby-source-mongodb": "^1.5.21",
+    "gatsby-source-mongodb": "next",
     "react": "^16.4.1",
     "react-burger-menu": "^2.5.2",
     "react-dom": "^16.4.1",

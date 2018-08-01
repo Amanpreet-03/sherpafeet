@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 import Layout from '../components/Layout';
 import FaFacebook from 'react-icons/lib/fa/facebook';
 import FaTwitter from 'react-icons/lib/fa/twitter';
+import { graphql } from 'gatsby';
 //@import url('https://fonts.googleapis.com/css?family=PT Serif');
 //import { slide as BurgerMenu } from 'react-burger-menu'
 
@@ -111,49 +112,99 @@ const carddesc = css`
     text-align: center;
 `
 
-export default () => {
+export default ({data}) => {
     return (<div>
                 <Layout>  
                     <div className={bg}> 
-                    <div className={container}>
-                    <div className={contain}>
-                        <img className={img} src="https://sherpafeet.com/assets/31c8c0d6.png" alt="sherpafeet logo" />
-                        <div className={pipe}></div>
-                        <div>
-                            <div className={x}>
-                        <div className={follow}>
-                        <span>Follow Us</span>
-                        </div>
-                        <div className={icons}>
-                        <a><FaFacebook/></a>
-                        <a><FaTwitter/></a>
-                        </div>
-                        </div>
-                        </div>
-                    </div>
+                        <div className={container}>
+                            <div className={contain}>
+                                <img className={img} src="https://sherpafeet.com/assets/31c8c0d6.png" alt="sherpafeet logo" />
+                                <div className={pipe}></div>
+                                <div>
+                                    <div className={x}>
+                                        <div className={follow}>
+                                            <span>Follow Us</span>
+                                        </div>
+                                        <div className={icons}>
+                                            <a><FaFacebook /></a>
+                                            <a><FaTwitter /></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div className={a}>
-                        <p className={b}><span className={c}>Treks, Hikes &</span>Find Local Guides </p>
-                    </div>
-                    </div>
+                            <div className={a}>
+                                <p className={b}><span className={c}>Treks, Hikes &</span>Find Local Guides </p>
+                            </div>
+                        </div>
 
                 </div>
                 <h2 className={guideText}>Guide Spotlight (Based on most reviews)</h2>
                 <div className={card}>
-                //<Link to="#" className={carddesc}>Mountain Advice Adventure Travel</Link>
-                <Link to="#" className={cardimg}><img src="https://s3-ap-southeast-1.amazonaws.com/carabiner/guides/RajeshThakur.jpg" alt="guide profile"/></Link>
-                <div className={carddesc}>Add a description of the image here</div>
+                    <Link to="#">{data.mongodbTestGuides.businessname}</Link>
+                    <Link to="#" className={cardimg}><img src="https://s3-ap-southeast-1.amazonaws.com/carabiner/guides/RajeshThakur.jpg" alt="guide profile"/></Link>
+                    <strong>{data.mongodbTestGuides.firstname} {data.mongodbTestGuides.lastname}</strong>
+                    <p>Age {data.mongodbTestGuides.age}</p>
+                    <p>{data.mongodbTestGuides.address.city}, {data.mongodbTestGuides.address.state}</p>
+                    <p>Guiding work since {data.mongodbTestGuides.startwork}</p>
+                    <div className={carddesc}>Add a description of the image here</div>
                 </div>
 
 
-                
-                </Layout>  
-            </div> 
+              
+            </Layout>  
+        </div> 
     )
 }
 
 
+export const query = graphql`
+  query IndexQuery1 {
+            mongodbTestGuides(uid: {eq: "RajeshThakur"}) {
+                    businessname
+                    firstname
+                    lastname
+                    age
+                    address {
+                                city
+                                state
+                            }
+                    startwork
+                    rating
+            }
+    }
+
+       
+`
+
+  
+
+// export const query = graphql`
+//   query IndexQuery1 
+//         {
+//             allMongodbTestGuides{
+//                 edges{
+//                     node{
+//                         uid
+//                         firstname
+//                     }
+//                 }
+//             }
+//         }
+    
+// `
 
 
 
 
+{/* <div> 
+                   {
+                        data.allMongodbTestGuides.edges.map(({node}) => {
+                            console.log(node)
+                            
+                            return <div> { node.firstname } </div>
+
+                        }
+                        )
+                    } */}
+                   
