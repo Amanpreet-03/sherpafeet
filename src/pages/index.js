@@ -8,6 +8,7 @@ import { graphql } from 'gatsby';
 import Rating from 'react-rating';
 import FaHeartO from 'react-icons/lib/fa/heart-o';
 import FaHeart from 'react-icons/lib/fa/heart';
+import Icon from '../components/Icons';
 
 
 
@@ -105,9 +106,16 @@ const card = css`
     width: 290px;
     min-height:550px;
     //padding-bottom:10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    &:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+;
+      }
+    margin-left:80px;
+    margin-bottom:50px;
 `
 const cardTitle = css`
-    //text-decoration;none;
+    text-decoration:none;
     text-align: center;
     //font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     
@@ -115,8 +123,9 @@ const cardTitle = css`
 const cardh = css`
     //text-decoration;none;
     text-align: center;
+    margin-bottom:0;
     color:rgba(59,89,152,.6);
-    //font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     padding:25px 10px;
     &:hover {
         color: #23527c;
@@ -135,6 +144,8 @@ const cardBlock = css`
     font-size:14px;
     color:#757575;
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    
+
 `
 const symbolFull = css`
     color: rgba(59,89,152,0.6);
@@ -175,6 +186,7 @@ export default ({data}) => {
 
                     </div>
                     <h2 className={guideText}>Guide Spotlight (Based on most reviews)</h2>
+
                     <div className={card}>
                         <Link to="#" className={cardTitle}><h5 className={cardh}>{data.mongodbTestGuides.businessname}</h5></Link>
                         <Link to="#" className={cardimg}><img src="https://s3-ap-southeast-1.amazonaws.com/carabiner/guides/RajeshThakur.jpg" alt="guide profile"/></Link>
@@ -185,6 +197,24 @@ export default ({data}) => {
                             <div>{data.mongodbTestGuides.address.city}, {data.mongodbTestGuides.address.state}</div>
                             <div>Guiding work since <strong>{year}</strong></div>
                             <Rating readonly={true} initialRating={data.mongodbTestGuides.rating} emptySymbol={<FaHeartO className={symbolEmpty}/>} fullSymbol={<FaHeart className={symbolFull}/>}/>              
+                            <div><Icon icon="speaking"/>
+                            <Icon icon="degree"/>
+                            <Icon icon="certificate"/>
+                            <Icon icon="degreecap"/>
+                            
+                            </div>
+                            
+
+
+
+
+
+
+
+
+
+
+
                                                     </div>  
                     </div>
             </Layout>  
