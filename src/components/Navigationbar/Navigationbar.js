@@ -189,7 +189,7 @@ class Nav extends Component {
 
                 <nav className={nav}>
                     <div className={navDiv}>
-                        <Link to="#" className={navli}>Find & Review Guides</Link>
+                        <Link to="/guides/" className={navli}>Find & Review Guides</Link>
                     </div>
                     <div className={`${dropdownMenustyle} ${navDiv}`}>
                         <Link className={navli}>Treks</Link>

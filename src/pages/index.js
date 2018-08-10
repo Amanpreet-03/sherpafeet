@@ -9,6 +9,9 @@ import Rating from 'react-rating';
 import FaHeartO from 'react-icons/lib/fa/heart-o';
 import FaHeart from 'react-icons/lib/fa/heart';
 import Icon from '../components/Icons';
+import Popover from '../components/Popover';
+
+
 
 
 
@@ -156,9 +159,13 @@ const symbolEmpty = css`
     font-size:18px;
 `
 
+
+    
 export default ({data}) => {
     const date = data.mongodbTestGuides.startwork;
     const year = date.substring(date.lastIndexOf('-')+1,date.length)
+      
+      
     return (<div>
                 <Layout>  
                     <div className={bg}> 
@@ -197,26 +204,27 @@ export default ({data}) => {
                             <div>{data.mongodbTestGuides.address.city}, {data.mongodbTestGuides.address.state}</div>
                             <div>Guiding work since <strong>{year}</strong></div>
                             <Rating readonly={true} initialRating={data.mongodbTestGuides.rating} emptySymbol={<FaHeartO className={symbolEmpty}/>} fullSymbol={<FaHeart className={symbolFull}/>}/>              
-                            <div><Icon icon="speaking"/>
+                            <div>
+                            <Popover  title="English" content="The guide can understand English.">
+                            <Icon icon="speaking"/>
+                            </Popover>
+                            <Popover  title="Basic Mountaineering" content="The guide has completed a certification in Basic Mountaineering.">
                             <Icon icon="degree"/>
+                            </Popover>
+                            <Popover  title="Advanced Mountaineering" content="The guide has completed a certification in Advanced Mountaineering.">
                             <Icon icon="certificate"/>
+                            </Popover>
+    
+                            <Popover  title="Methods Of Instruction" content="The guide is a trained instructor.">
                             <Icon icon="degreecap"/>
+                            </Popover>
                             
-                            </div>
+                        </div>
                             
-
-
-
-
-
-
-
-
-
-
-
-                                                    </div>  
+                            
+                    </div>  
                     </div>
+                    
             </Layout>  
         </div> 
     )
@@ -236,6 +244,13 @@ export const query = graphql`
                             }
                     startwork
                     rating
+                    info {
+                        bmc
+                        amc
+                        moi
+                        english
+                        sar
+                      }
             }
     }
 
@@ -273,3 +288,19 @@ export const query = graphql`
                         )
                     } */}
                    
+//<span className={popover}>Tooltip text<span className={popover}>Tooltip</span></span>
+                                
+
+/*<div className={popoverWrapper}>Hover over me
+                            <span className={popover}>
+                            <div>Tooltip text<div>Tooltip</div></div>
+                                
+                            </span>
+                                
+
+                                </div>
+
+                                */
+                            //    className={css`${popover};
+                            //    background-color: #f2f2f2;
+                            //    `}

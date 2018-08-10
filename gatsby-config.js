@@ -6,11 +6,13 @@ module.exports = {
                 options: { dbName: `test`, 
                            collection: `guides`
                          }
-              }
+              },
+              `gatsby-transformer-sharp`,
+              `gatsby-plugin-sharp`
+          
             ],
   };
   
-
 
   
 
