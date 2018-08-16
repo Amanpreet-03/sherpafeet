@@ -7,14 +7,24 @@ module.exports = {
                            collection: `guides`
                          }
               },
-              `gatsby-transformer-sharp`,
-              `gatsby-plugin-sharp`
+              {
+                resolve: `gatsby-source-filesystem`,
+                options: {
+                  name: `guideimages`,
+                  path: `${__dirname}/src/guideimages`,
+                }},
+                `gatsby-transformer-sharp`,
+                `gatsby-plugin-sharp`,
+  
+          
           
             ],
-  };
-  
+  }
 
   
+
+
+
 
 /*
 

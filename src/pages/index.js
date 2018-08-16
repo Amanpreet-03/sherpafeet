@@ -10,6 +10,7 @@ import FaHeartO from 'react-icons/lib/fa/heart-o';
 import FaHeart from 'react-icons/lib/fa/heart';
 import Icon from '../components/Icons';
 import Popover from '../components/Popover';
+import Img from "gatsby-image";
 
 
 
@@ -172,6 +173,8 @@ export default ({data}) => {
                         <div className={container}>
                             <div className={contain}>
                                 <img className={img} src="https://sherpafeet.com/assets/31c8c0d6.png" alt="sherpafeet logo" />
+                                
+
                                 <div className={pipe}></div>
                                 <div>
                                     <div className={x}>
@@ -196,7 +199,7 @@ export default ({data}) => {
 
                     <div className={card}>
                         <Link to="#" className={cardTitle}><h5 className={cardh}>{data.mongodbTestGuides.businessname}</h5></Link>
-                        <Link to="#" className={cardimg}><img src="https://s3-ap-southeast-1.amazonaws.com/carabiner/guides/RajeshThakur.jpg" alt="guide profile"/></Link>
+                        <Link to="#" className={cardimg}><img src={data.imageSharp.original.src}/></Link>
                         
                         <div className={cardBlock}>
                             <span><strong>{data.mongodbTestGuides.firstname} {data.mongodbTestGuides.lastname}</strong></span>
@@ -251,11 +254,49 @@ export const query = graphql`
                         english
                         sar
                       }
-            }
+                    }
+            imageSharp(original: {src: {regex: "/RajeshThakur/"}}){
+                    id
+                    original {
+                        width
+                        height
+                        src
+                    }
+                    }  
+                    
+            
     }
 
        
 `
+
+
+// export const query = graphql`
+//   query IndexQuery1 {
+//             mongodbTestGuides(uid: {eq: "RajeshThakur"}) {
+//                     businessname
+//                     firstname
+//                     lastname
+//                     age
+//                     address {
+//                                 city
+//                                 state
+//                             }
+//                     startwork
+//                     rating
+//                     info {
+//                         bmc
+//                         amc
+//                         moi
+//                         english
+//                         sar
+//                       }
+                    
+//             }
+//     }
+
+       
+// `
 
   
 
@@ -304,3 +345,6 @@ export const query = graphql`
                             //    className={css`${popover};
                             //    background-color: #f2f2f2;
                             //    `}
+
+                           // img src="https://s3-ap-southeast-1.amazonaws.com/carabiner/guides/RajeshThakur.jpg"
+                        //    <Link to="#" className={cardimg}><img src="https://s3-ap-southeast-1.amazonaws.com/carabiner/guides/RajeshThakur.jpg"/></Link>
