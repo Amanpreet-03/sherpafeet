@@ -314,37 +314,3 @@ export const query = graphql`
 //         }
     
 // `
-
-
-
-
-{/* <div> 
-                   {
-                        data.allMongodbTestGuides.edges.map(({node}) => {
-                            console.log(node)
-                            
-                            return <div> { node.firstname } </div>
-
-                        }
-                        )
-                    } */}
-                   
-//<span className={popover}>Tooltip text<span className={popover}>Tooltip</span></span>
-                                
-
-/*<div className={popoverWrapper}>Hover over me
-                            <span className={popover}>
-                            <div>Tooltip text<div>Tooltip</div></div>
-                                
-                            </span>
-                                
-
-                                </div>
-
-                                */
-                            //    className={css`${popover};
-                            //    background-color: #f2f2f2;
-                            //    `}
-
-                           // img src="https://s3-ap-southeast-1.amazonaws.com/carabiner/guides/RajeshThakur.jpg"
-                        //    <Link to="#" className={cardimg}><img src="https://s3-ap-southeast-1.amazonaws.com/carabiner/guides/RajeshThakur.jpg"/></Link>

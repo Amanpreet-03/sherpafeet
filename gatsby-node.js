@@ -8,14 +8,17 @@ exports.createPages = ({ graphql, actions }) => {
         graphql(
           `
         {
-            allMongodbTestGuides{
+              allImageSharp{
                 edges{
                   node{
-                    uid
-                    
+                    original {
+                      src
+                    }
                   }
                 }
+                
               }
+            
             }
       `
         ).then(result => {
@@ -30,13 +33,13 @@ exports.createPages = ({ graphql, actions }) => {
 
 
           // Create blog post pages.
-        
+          
           createPage({
             path: `/guides/`,
             component: guidesTemplate,
-            context: {
-              uid: "/RoshanRautela/",
-            }
+            context: result.data.allImageSharp.edges
+                ,
+              
             
           })
         

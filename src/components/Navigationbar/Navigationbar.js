@@ -205,7 +205,7 @@ class Nav extends Component {
                     <div className={`${dropdownMenustyle} ${navDiv}`}>
                         <Link className={navli}>About</Link>
                         <div className={dropdownitemstyle}>
-                            <a href="#">About Us</a>
+                            <a href="/aboutus/">About Us</a>
                             <a href="#">Mission</a>
                             <a href="#">Contact</a>
                         </div>
