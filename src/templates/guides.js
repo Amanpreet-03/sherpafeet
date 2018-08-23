@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { graphql } from "gatsby";
 import { css } from 'react-emotion';
 import { Link } from 'gatsby';
@@ -23,13 +23,37 @@ const numberofGuides = css`
     font-weight:500;
 `
 
-const cardContainer = css`
-    //padding:20px;
+// const cardContainer = css`
+//     //padding:20px;
+//     display:flex;
+//     flex-wrap:wrap;
+//     justify-content:space-between;
+//     align-content:space between;
+
+// `
+const cards = css`
     display:flex;
     flex-wrap:wrap;
-    justify-content:space-between;
-    align-content:space between;
+    //justify-content:space-between;
+    //align-content:space between;
+    padding-left:30px;
+    //padding-right:30px;
 
+`
+const incards = css`
+    display:flex;
+    flex-wrap:wrap;
+    //justify-content:space-between;
+    //align-content:space between;
+    flex-basis:26%;
+    //flex:2;
+
+`
+
+const spacing = css`
+    //display:flex;
+    //flex-basis:40%;
+    flex:1;
 `
 
 
@@ -39,7 +63,7 @@ const card = css`
     //float: left;
     width: 250px;
     height:600px;
-    //padding-bottom:10px;
+    //margin-right:20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     &:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -48,12 +72,14 @@ const card = css`
     //margin-left:50px;
     //margin-bottom:50px;
       //flex:1;
-      //flex-basis:30%
+      //flex-shrink:0;
+      
 `
 const cardTitle = css`
     text-decoration:none;
     text-align: center;
     //font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+
     
 `
 const cardh = css`
@@ -62,7 +88,7 @@ const cardh = css`
     margin-bottom:0;
     color:rgba(59,89,152,.6);
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
-    padding:25px 10px;
+    padding:25px 10px 10px 10px;;
     &:hover {
         color: #23527c;
       }
@@ -97,7 +123,8 @@ const sharebuttons = css`
     justify-content:center;
     //margin:auto;
     //text-align:center;
-    //padding:5px;
+    padding-bottom:10px;
+    //margin-botton:200px;
     
 `
 
@@ -116,45 +143,83 @@ export default (props) => {
 
     let imagePath = Object.values(props.pathContext).map(x => x.node.original.src);
 
-    // const date = data.allMongodbTestGuides.edges.node.startwork;
-    // const year = date.substring(date.lastIndexOf('-')+1,date.length)
+    const business=(nameofbusiness) => {
+        if(nameofbusiness!=null){
+            return nameofbusiness;
+        } else {
+            return <div>Independent Trekking Guide</div>
+        }
+    }
+
+     const guidingSince=(datestring) => {
+        var year=datestring.substring(datestring.lastIndexOf('-')+1,datestring.length);
+        return year;
+    }
+
+    const getAge=(datestring) => {
+        var parts = datestring.split("-");
+        var today = new Date();
+        var birthDate = new Date(parts[2], parts[1] - 1, parts[0]);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+      }
+
+    const marriedKids=(ismarried,haskids) => {
+        if(ismarried||haskids){
+            if(haskids){
+                var married=(<span>, Married with kids</span>)
+            } else{
+                married=(<span>, Married</span>)
+            }
+        }
+        return married;
+    }
     
-
-    // props.pathContext.forEach(x => console.log(x) )
-    //console.log((props.pathContext[0]).node.original.src);
-    // var a = props.pathContext;
-    // // console.log(Object.keys(a).length);
-
-    // var i;
-    // var imagePath = [];
-    // for (i = 0; i < Object.keys(a).length; i++) {
-    //     var b = a[i];
-    //     var c = b.node.original.src;
-    //     // console.log(c);
-    //     imagePath.push(c);
+    const reviews=(raters) => {
+        if(raters){
+            return raters
+        } else {
+            return <span>No</span>
+                 }
+        }
+            
+    // const iconpop=(eng) => {
+    //     if (eng){
+    //         return(
+    //             <Popover title="English" content="The guide can understand English.">
+    //                 <Icon icon="speaking" />
+    //             </Popover>
+    //         )
+    //     }
     // }
 
-    // // console.log(typeof (c));
-    // // console.log(imagePath);
-    // imagePath.forEach(function (element) {
-    //     // console.log(element);
-    // });
-
-    //{{node.startwork}.substring(date.lastIndexOf('-')+1,date.length}
-    // const a=data.allMongodbTestGuides.edges.node.startwork
-    // const y=a.substring(a.lastIndexOf('-')+1,a.length)
-    // console.log(y);
-
-
+    // const iconpop=(info,eng) => {
+    //     if (info!=null){
+    //         if (eng!=null){
+    //             return(
+    //                 <Popover title="English" content="The guide can understand English.">
+    //                     <Icon icon="speaking" />
+    //                 </Popover>
+    //             )
+    //         }
+    //     }
+    // }
+    
     return (
         <div>
             <Layout>
                 <h6 className={numberofGuides}>Found {data.allMongodbTestGuides.edges.length} guides for treks and hikes in the Indian Himalayas.
       </h6>
-                <div className={cardContainer}>
-                    {data.allMongodbTestGuides.edges.map(({ node }, index) => (
+      <div className={cards}>
+                    {data.allMongodbTestGuides.edges.map(({ node }, index) =>(
+                      <div className={incards}>  
+                    <div className={spacing}></div>
                         <div className={card} key={index}>
-                            <Link to="#" className={cardTitle}><h5 className={cardh}>{node.businessname}</h5></Link>
+                            <Link to="#" className={cardTitle}><h5 className={cardh}>{business(node.businessname)}</h5></Link>
 
 
                         <div className={sharebuttons}>
@@ -187,19 +252,22 @@ export default (props) => {
                             
                             <div className={cardBlock}>
                                 <span><strong>{node.firstname} {node.lastname}</strong></span>
-                                <div>Age {node.age}</div>
+                                <div>Age {getAge(node.dateofbirth)}{marriedKids(node.married,node.haschildren)}</div>
                                 <div>{node.address.city}, {node.address.state}</div>
-                                <div>Guiding work since <strong>{node.startwork.substring(node.startwork.lastIndexOf('-')+1,node.startwork.length)}</strong></div>
+                                <div>Guiding work since <strong>{guidingSince(node.startwork)}</strong></div>
 
                                 <Rating readonly={true} initialRating={node.rating} emptySymbol={<FaHeartO className={symbolEmpty} />} fullSymbol={<FaHeart className={symbolFull} />} />
-                                <div><strong>{node.raters} Reviews</strong></div>
+                                <div><strong>{reviews(node.raters)} Reviews</strong></div>
                                 <div>
-                                    <Popover title="English" content="The guide can understand English.">
+                                
+                            
+                                        <Popover title="English" content="The guide can understand English.">
                                         <Icon icon="speaking" />
-                                    </Popover>
-                                    <Popover title="Basic Mountaineering" content="The guide has completed a certification in Basic Mountaineering.">
+                                        </Popover>
+                                     <Popover title="Basic Mountaineering" content="The guide has completed a certification in Basic Mountaineering.">
                                         <Icon icon="degree" />
-                                    </Popover>
+                                    </Popover>  
+                                                                    
                                     <Popover title="Advanced Mountaineering" content="The guide has completed a certification in Advanced Mountaineering.">
                                         <Icon icon="certificate" />
                                     </Popover>
@@ -207,13 +275,19 @@ export default (props) => {
                                     <Popover title="Methods Of Instruction" content="The guide is a trained instructor.">
                                         <Icon icon="degreecap" />
                                     </Popover>
+                                    <Popover title="Search & Rescue" content="The guide has completed a certification in Search & Rescue.">
+                                        <Icon icon="firstaid" />
+                                    </Popover>
+
 
                                 </div>
-
+        
+                                
 
                             </div>
 
                         </div>
+                       </div> 
 
                     ))}
                 </div>
@@ -243,6 +317,17 @@ export const query = graphql`
           startwork
           rating
           raters
+          dateofbirth
+          married
+          haschildren
+          info {
+            bmc
+            amc
+            moi
+            english
+            sar
+          }
+
         }
       }
     }
@@ -251,3 +336,4 @@ export const query = graphql`
 
   }
 `
+//<span>{iconwithpop(node.info.english)}</span>

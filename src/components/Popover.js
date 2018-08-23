@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { css } from 'react-emotion';
-import Icon from './Icons';
 
 const popoverWrapper = css`
     position: relative;
