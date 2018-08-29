@@ -5,12 +5,22 @@ import Layout from '../components/Layout';
 import FaFacebook from 'react-icons/lib/fa/facebook';
 import FaTwitter from 'react-icons/lib/fa/twitter';
 import { graphql } from 'gatsby';
+import Rating from 'react-rating';
+import FaHeartO from 'react-icons/lib/fa/heart-o';
+import FaHeart from 'react-icons/lib/fa/heart';
+import Icon from '../components/Icons';
+import Popover from '../components/Popover';
+import Img from "gatsby-image";
+
+
+
+
+
+
+
+
 //@import url('https://fonts.googleapis.com/css?family=PT Serif');
 //import { slide as BurgerMenu } from 'react-burger-menu'
-
-
-
-
 
 const bg = css`
     background-image:url('https://sherpafeet.com/img/chandrataal.png');
@@ -92,33 +102,79 @@ const guideText= css`
     //text-align:center;
     
 `
+
 const card = css`
     margin: 5px;
     border: 1px solid #ccc;
     //float: left;
-    width: 180px;
-    padding-bottom:10px;
-
-
+    width: 290px;
+    min-height:550px;
+    //padding-bottom:10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    &:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+;
+      }
+    margin-left:80px;
+    margin-bottom:50px;
 `
+const cardTitle = css`
+    text-decoration:none;
+    text-align: center;
+    //font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    
+`
+const cardh = css`
+    //text-decoration;none;
+    text-align: center;
+    margin-bottom:0;
+    color:rgba(59,89,152,.6);
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    padding:25px 10px;
+    &:hover {
+        color: #23527c;
+      }
+`
+
 const cardimg = css`
-    width: 100%;
+    max-width: 100%;
     height: auto;
 
 
 `
-const carddesc = css`
-    padding: 15px;
+const cardBlock = css`
     text-align: center;
+    margin:0 auto;
+    font-size:14px;
+    color:#757575;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    
+
+`
+const symbolFull = css`
+    color: rgba(59,89,152,0.6);
+    font-size:16px;
+`
+const symbolEmpty = css`
+    color: #f4f4f4;
+    font-size:18px;
 `
 
+
+    
 export default ({data}) => {
+    const date = data.mongodbTestGuides.startwork;
+    const year = date.substring(date.lastIndexOf('-')+1,date.length)
+      
+      
     return (<div>
                 <Layout>  
                     <div className={bg}> 
                         <div className={container}>
                             <div className={contain}>
                                 <img className={img} src="https://sherpafeet.com/assets/31c8c0d6.png" alt="sherpafeet logo" />
+                                
+
                                 <div className={pipe}></div>
                                 <div>
                                     <div className={x}>
@@ -138,20 +194,40 @@ export default ({data}) => {
                             </div>
                         </div>
 
-                </div>
-                <h2 className={guideText}>Guide Spotlight (Based on most reviews)</h2>
-                <div className={card}>
-                    <Link to="#">{data.mongodbTestGuides.businessname}</Link>
-                    <Link to="#" className={cardimg}><img src="https://s3-ap-southeast-1.amazonaws.com/carabiner/guides/RajeshThakur.jpg" alt="guide profile"/></Link>
-                    <strong>{data.mongodbTestGuides.firstname} {data.mongodbTestGuides.lastname}</strong>
-                    <p>Age {data.mongodbTestGuides.age}</p>
-                    <p>{data.mongodbTestGuides.address.city}, {data.mongodbTestGuides.address.state}</p>
-                    <p>Guiding work since {data.mongodbTestGuides.startwork}</p>
-                    <div className={carddesc}>Add a description of the image here</div>
-                </div>
+                    </div>
+                    <h2 className={guideText}>Guide Spotlight (Based on most reviews)</h2>
 
-
-              
+                    <div className={card}>
+                        <Link to="#" className={cardTitle}><h5 className={cardh}>{data.mongodbTestGuides.businessname}</h5></Link>
+                        <Link to="#" className={cardimg}><img src={data.imageSharp.original.src}/></Link>
+                        
+                        <div className={cardBlock}>
+                            <span><strong>{data.mongodbTestGuides.firstname} {data.mongodbTestGuides.lastname}</strong></span>
+                            <div>Age {data.mongodbTestGuides.age}</div>
+                            <div>{data.mongodbTestGuides.address.city}, {data.mongodbTestGuides.address.state}</div>
+                            <div>Guiding work since <strong>{year}</strong></div>
+                            <Rating readonly={true} initialRating={data.mongodbTestGuides.rating} emptySymbol={<FaHeartO className={symbolEmpty}/>} fullSymbol={<FaHeart className={symbolFull}/>}/>              
+                            <div>
+                            <Popover  title="English" content="The guide can understand English.">
+                            <Icon icon="speaking"/>
+                            </Popover>
+                            <Popover  title="Basic Mountaineering" content="The guide has completed a certification in Basic Mountaineering.">
+                            <Icon icon="degree"/>
+                            </Popover>
+                            <Popover  title="Advanced Mountaineering" content="The guide has completed a certification in Advanced Mountaineering.">
+                            <Icon icon="certificate"/>
+                            </Popover>
+    
+                            <Popover  title="Methods Of Instruction" content="The guide is a trained instructor.">
+                            <Icon icon="degreecap"/>
+                            </Popover>
+                            
+                        </div>
+                            
+                            
+                    </div>  
+                    </div>
+                    
             </Layout>  
         </div> 
     )
@@ -171,11 +247,56 @@ export const query = graphql`
                             }
                     startwork
                     rating
-            }
+                    info {
+                        bmc
+                        amc
+                        moi
+                        english
+                        sar
+                      }
+                    }
+            imageSharp(original: {src: {regex: "/RajeshThakur/"}}){
+                    id
+                    original {
+                        width
+                        height
+                        src
+                    }
+                    }  
+                    
+            
     }
 
        
 `
+
+
+// export const query = graphql`
+//   query IndexQuery1 {
+//             mongodbTestGuides(uid: {eq: "RajeshThakur"}) {
+//                     businessname
+//                     firstname
+//                     lastname
+//                     age
+//                     address {
+//                                 city
+//                                 state
+//                             }
+//                     startwork
+//                     rating
+//                     info {
+//                         bmc
+//                         amc
+//                         moi
+//                         english
+//                         sar
+//                       }
+                    
+//             }
+//     }
+
+       
+// `
 
   
 
@@ -193,18 +314,3 @@ export const query = graphql`
 //         }
     
 // `
-
-
-
-
-{/* <div> 
-                   {
-                        data.allMongodbTestGuides.edges.map(({node}) => {
-                            console.log(node)
-                            
-                            return <div> { node.firstname } </div>
-
-                        }
-                        )
-                    } */}
-                   

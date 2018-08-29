@@ -4,15 +4,27 @@ module.exports = {
               {
                 resolve: `gatsby-source-mongodb`,
                 options: { dbName: `test`, 
-                           collection: [`guides`,`treks`,`usrs`]
+                           collection: [`guides`,`rating`,`usrs`]
                          }
-              }
+              },
+              {
+                resolve: `gatsby-source-filesystem`,
+                options: {
+                  name: `guideimages`,
+                  path: `${__dirname}/src/guideimages`,
+                }},
+                `gatsby-transformer-sharp`,
+                `gatsby-plugin-sharp`,
+  
+          
+          
             ],
-  };
+  }
+
   
 
 
-  
+
 
 /*
 
