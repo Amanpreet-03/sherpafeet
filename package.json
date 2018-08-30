@@ -8,12 +8,16 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
+    "antd": "^3.8.4",
+    "babel-plugin-import": "^1.8.0",
     "bootstrap": "^3.3.7",
+    "color": "^3.0.0",
     "emotion": "^9.2.6",
     "emotion-server": "^9.2.6",
+    "emotion-theming": "^9.2.6",
     "gatsby": "^2.0.0-beta.51",
     "gatsby-image": "^1.0.55",
-    "gatsby-link": "^1.6.45",
+    "gatsby-link": "next",
     "gatsby-plugin-emotion": "next",
     "gatsby-plugin-sharp": "^1.6.48",
     "gatsby-plugin-typography": "^1.7.19",
