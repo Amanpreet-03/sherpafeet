@@ -4,21 +4,14 @@ import {Link} from 'gatsby';
 import FaAlignJustify from 'react-icons/lib/fa/align-justify';
 
 const topnav = css`
-    background: white;
-    height: 3.5rem;
-    overflow:visible;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
     box-shadow:0px 1px 8px -2px #000000;
-    padding: 7px 10px 7px 35px;                     
     display:flex;                                      
 `
 const logo = css`
-    height:40px;
-    width:160.5px;
-    flex-shrink:0;                                              
+    width:200px;
+    top: 15%;
+    left: 5%;
+    position: absolute;
 `
 const nav = css`
     display:flex;                                                        
@@ -30,12 +23,12 @@ const nav = css`
     text-transform: uppercase;
     font-family:Helvetica Neue,Helvetica,Arial,sans-serif;  
     @media all and (max-width: 850px) {
-              flex-wrap: wrap;
-          }
-          @media all and (max-width: 750px) {
-            flex-wrap: wrap;
-            display:none;
-        }     
+        flex-wrap: wrap;
+    }
+    @media all and (max-width: 750px) {
+        flex-wrap: wrap;
+        display:none;
+    }     
 `
 const navli = css`
     white-space:nowrap;  
@@ -97,8 +90,10 @@ const navDiv = css`
 }
 `
 const burgerbutton = css`
+    position: absolute;
     display:none;
     color:#3b5998;
+    right: 5%;
     font-size:32px;
     @media all and (max-width: 750px) {
         display:block;

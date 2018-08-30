@@ -6,13 +6,14 @@ import Color from 'color';
 
 const { Header, Content, Footer, Sider } = Layout;
 
+// https://github.com/ant-design/ant-design/issues/5570#issuecomment-313183003
+
 /*
  * We'll start with just one theme for now. Define colors and other styles here.
- * More themes can be easily added later. Look in ./App.js to see where this
- * theme is actually used.
+ * More themes can be easily added later. 
  */
 
- /*
+ 
 const mainTheme = {
   primaryColor: Color('#fd3d57'),
   primaryTextColor: Color('#fff'),
@@ -22,58 +23,14 @@ const defaultTheme = mainTheme;
 
 // Inject global styles - seems to be the only way to customize Ant Design
 // PLEASE ADD STYLES IN ALPHABETICAL ORDER for everyone's sanity. Thanks.
-injectGlobal`
-  .ant-btn {
-    &:hover {
-      border-color: ${defaultTheme.primaryColor
-        .lighten(0.2)
-        .toString()} !important;
-      color: ${defaultTheme.primaryColor.lighten(0.2).toString()} !important;
-    }
-
-    &:active {
-      border-color: ${defaultTheme.primaryColor
-        .darken(0.2)
-        .toString()} !important;
-      color: ${defaultTheme.primaryColor.darken(0.2).toString()} !important;
-    }
+injectGlobal`  
+  .ant-layout-footer {
+    padding: 0px;
   }
-
-  .ant-btn-primary {
-    background-color: ${defaultTheme.primaryColor.toString()} !important;
-    border-color: ${defaultTheme.primaryColor.toString()} !important;
-    color: ${defaultTheme.primaryTextColor.toString()} !important;
-
-    &:hover {
-      background-color: ${defaultTheme.primaryColor
-        .lighten(0.2)
-        .toString()} !important;
-      border-color: ${defaultTheme.primaryColor
-        .lighten(0.2)
-        .toString()} !important;
-      color: ${defaultTheme.primaryTextColor.toString()} !important;
-    }
-
-    &:active {
-      background-color: ${defaultTheme.primaryColor
-        .darken(0.2)
-        .toString()} !important;
-      border-color: ${defaultTheme.primaryColor
-        .darken(0.2)
-        .toString()} !important;
-      color: ${defaultTheme.primaryTextColor.toString()} !important;
-    }
+  .ant-layout-header {
+    padding: 0px;
   }
-
-  .ant-btn-clicked:after {
-    border: 0 solid ${defaultTheme.primaryColor.toString()} !important;
-  }
-
-  .ant-switch-checked {
-    background-color: ${defaultTheme.primaryColor.toString()} !important;
-    border-color: ${defaultTheme.primaryColor.toString()} !important;
-  }
-`; */
+`; 
 
 export default () => 
 <Layout>

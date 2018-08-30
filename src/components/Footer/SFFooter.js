@@ -31,11 +31,10 @@ const container = css`
     background: #3b5998;
     color: #fff;
     width: 100%;
-    box-sizing:border-box;
 
 `
 
-const Footer=()=>(
+const SFFooter=()=>(
     <div className={container}>
     <span className={text}>© sherpafeet</span>
     <span className={spacer}>.</span>
@@ -59,4 +58,4 @@ const Footer=()=>(
     </div>
 )
 
-export default Footer;
+export default SFFooter;
