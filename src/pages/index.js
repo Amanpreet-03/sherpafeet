@@ -13,12 +13,6 @@ import Popover from '../components/Popover';
 import Img from "gatsby-image";
 
 
-
-
-
-
-
-
 //@import url('https://fonts.googleapis.com/css?family=PT Serif');
 //import { slide as BurgerMenu } from 'react-burger-menu'
 
@@ -38,17 +32,11 @@ const img=css`
     height:196px;
 `
 const a=css`
-display:flex;
-//flex-wrap:wrap;
-    //text-align: center;
+    display:flex;
     font-size: 70px;
-    //width: 1026px;
-    //margin-left: 426px;
-   // padding-top: 40px;
     padding-bottom:340px;
     justify-content:center;
     text-align:center;
-    
 `
 const b=css`
     color:#3b5998`
@@ -56,16 +44,10 @@ const c=css`
     color:white;
     `
 const contain = css`
-    //margin: 0 auto;
-    //margin-left:10px;
     padding: 70px;
-    //max-width: var(--max-content-width);
     display:flex;
-    //box-sizing:border-box;
     align-items:center;
     justify-content:center;
-    
-
 `
 const pipe= css`
     background:#999;
@@ -77,8 +59,6 @@ const pipe= css`
 const x = css`
     display:flex;
     flex-direction:column;
-    
-
 `
 
 const follow = css`
@@ -87,33 +67,26 @@ const follow = css`
     text-transform: uppercase;
     letter-spacing:1px;
     font-weight:10px;
-    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
-    `
+ `
 
 const icons = css`
     color:#00aced;
     font-size:22px;
-
 `
+
 const guideText= css`
     padding:55px 0px 50px 30px;
-    font-family: PT Serif,serif;
     font-weight:normal;
-    //text-align:center;
-    
 `
 
 const card = css`
     margin: 5px;
     border: 1px solid #ccc;
-    //float: left;
     width: 290px;
     min-height:550px;
-    //padding-bottom:10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     &:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-;
       }
     margin-left:80px;
     margin-bottom:50px;
@@ -121,15 +94,12 @@ const card = css`
 const cardTitle = css`
     text-decoration:none;
     text-align: center;
-    //font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     
 `
 const cardh = css`
-    //text-decoration;none;
     text-align: center;
     margin-bottom:0;
     color:rgba(59,89,152,.6);
-    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     padding:25px 10px;
     &:hover {
         color: #23527c;
@@ -139,17 +109,12 @@ const cardh = css`
 const cardimg = css`
     max-width: 100%;
     height: auto;
-
-
 `
 const cardBlock = css`
     text-align: center;
     margin:0 auto;
     font-size:14px;
     color:#757575;
-    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
-    
-
 `
 const symbolFull = css`
     color: rgba(59,89,152,0.6);
@@ -159,7 +124,6 @@ const symbolEmpty = css`
     color: #f4f4f4;
     font-size:18px;
 `
-
 
     
 export default ({data}) => {

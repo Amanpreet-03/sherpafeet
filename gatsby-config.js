@@ -1,6 +1,11 @@
 module.exports = {
     plugins: [`gatsby-plugin-emotion`,
-              `gatsby-plugin-typography`,
+              {
+                resolve: `gatsby-plugin-typography`,
+                options: {
+                  pathToConfigModule: `utils/typography`,
+                },
+              },
               {
                 resolve: `gatsby-source-mongodb`,
                 options: { dbName: `test`, 

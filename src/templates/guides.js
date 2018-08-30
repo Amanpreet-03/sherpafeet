@@ -13,46 +13,22 @@ import { FacebookIcon, TwitterIcon, WhatsappIcon, LinkedinIcon } from 'react-sha
 import Img from "gatsby-image";
 
 
-
-
 const numberofGuides = css`
     padding: 128px 47px 48px;
     color:#626262;
-    font-size:12px;
-    font-family:PT Serif,serif;
-    font-weight:500;
 `
-
-// const cardContainer = css`
-//     //padding:20px;
-//     display:flex;
-//     flex-wrap:wrap;
-//     justify-content:space-between;
-//     align-content:space between;
-
-// `
 const cards = css`
     display:flex;
     flex-wrap:wrap;
-    //justify-content:space-between;
-    //align-content:space between;
     padding-left:30px;
-    //padding-right:30px;
-
 `
 const incards = css`
     display:flex;
     flex-wrap:wrap;
-    //justify-content:space-between;
-    //align-content:space between;
     flex-basis:26%;
-    //flex:2;
-
 `
 
 const spacing = css`
-    //display:flex;
-    //flex-basis:40%;
     flex:1;
 `
 
@@ -60,25 +36,16 @@ const spacing = css`
 const card = css`
     margin-bottom: 100px;
     border: 1px solid #ccc;
-    //float: left;
     width: 250px;
     height:600px;
-    //margin-right:20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     &:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      }
-    //margin-right:50px;
-    //margin-left:50px;
-    //margin-bottom:50px;
-      //flex:1;
-      //flex-shrink:0;
-      
+      }      
 `
 const cardTitle = css`
     text-decoration:none;
     text-align: center;
-    //font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
 
     
 `
@@ -87,7 +54,6 @@ const cardh = css`
     text-align: center;
     margin-bottom:0;
     color:rgba(59,89,152,.6);
-    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     padding:25px 10px 10px 10px;;
     &:hover {
         color: #23527c;
@@ -103,9 +69,7 @@ const cardimg = css`
 const cardBlock = css`
     text-align: center;
     margin:0 auto;
-    font-size:14px;
     color:#757575;
-    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     
 
 `
@@ -121,16 +85,11 @@ const symbolEmpty = css`
 const sharebuttons = css`
     display:flex;
     justify-content:center;
-    //margin:auto;
-    //text-align:center;
-    padding-bottom:10px;
-    //margin-botton:200px;
-    
+    padding-bottom:10px;    
 `
 
 const shareButton = css`
-      //padding:10px;
-      margin:8px;
+    margin:8px;
     &:hover {
         opacity:0.75;
     }
