@@ -2,6 +2,8 @@ import React from 'react'
 import { Button, Icon, Row, Col } from 'antd'
 import { Box, Flex } from 'rebass'
 import { css } from 'react-emotion'
+import Grain from '../generated/Grain'
+import SFIcon from '../components/Icon'
 
 
 const Card = () =>
@@ -59,5 +61,6 @@ export default () =>
                     <Card />
                 </Col>
             </Row>
+            <SFIcon color={"pink"} width={"140px"} render={Grain} />
         </Row>
     </Flex>  

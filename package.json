@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
+    "svg": "styled-svg --output-dir=src/generated src/svg/*.svg",
     "build": "gatsby build",
     "serve": "gatsby serve"
   },
@@ -39,5 +40,8 @@
     "typography-theme-funston": "^0.15.10",
     "typography-theme-grand-view": "^0.15.10",
     "typography-theme-wordpress-kubrick": "^0.15.10"
+  },
+  "devDependencies": {
+    "styled-svg": "^1.4.1"
   }
 }
